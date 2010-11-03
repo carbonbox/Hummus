@@ -1,4 +1,5 @@
-layout: "main"
-logger: "file"
-appname: "Hummus"
-
+layout  : "main"
+logger  : "file"
+appname : "Hummus"
+db      : "db.sqlite"
+session : "YAML"
