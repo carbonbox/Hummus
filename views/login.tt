@@ -1,0 +1,13 @@
+<h1>Welcome</h1>
+<div class=instructions>Please login below or <a href=/register>register</a>.</div>
+<% IF bad_credentials %>
+<div class='error message'>
+  <div class=title>Login Problem</div>
+  The email/password combination is not known.
+</div>
+<% END %>
+<form class=login method=post>
+  <label>Email</label><input name=email>
+  <label>Password</label><input type=password name=password>
+  <button type=submit>Login</button>
+</form>

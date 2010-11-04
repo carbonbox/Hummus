@@ -63,7 +63,7 @@ Registers a new user.
 
 sub register {
     my ($class, $email, $password) = @_;
-    die "User $email is already registered" if $class->new( email => $email );
+    die "User $email is already registered.\n" if $class->new( email => $email );
     my $key  = $class->generate_key();
     my $user = $class->insert( email => $email, key => $key );
     $user->set_password($password);
@@ -86,7 +86,7 @@ sub generate_key {
         my $key = Hummus::Util::KeyGen->key(12);
         return $key unless $class->new( key => $key );
     }
-    die 'Failed to generate user key';
+    die 'Failed to generate user key.';
 }
 
 1;

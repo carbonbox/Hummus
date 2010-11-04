@@ -1,11 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
+    <meta charset=UTF-8>
     <title>Hummus</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <link rel=stylesheet href=/css/reset.css>
+    <link rel=stylesheet href=/css/style.css>
+    <link rel=stylesheet href=/css/grid.css>
   </head>
   <body>
 <% content %>
   </body>
+  <script src=/js/mootools-core-1.3.js></script>
+  <script src=/js/grid.js></script>
 </html>

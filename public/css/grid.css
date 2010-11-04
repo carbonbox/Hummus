@@ -1,0 +1,35 @@
+.grid-toggle {
+    z-index    : 100;
+    position   : absolute;
+    border     : 1px solid #777;
+    bottom     : 0;
+    right      : 0;
+    padding    : 0.5em;
+    cursor     : pointer;
+}
+
+body.grid .grid-row, body.grid .grid-col {
+    display    : block;
+}
+
+.grid-row, .grid-col {
+    position   : absolute;
+    opacity    : 0;
+    z-index    : 99;
+    opacity    : 0.2;
+    display    : none;
+}
+
+.grid-row {
+    border-top : 1px solid #777;
+    left       : 2em;
+    right      : 2em;
+    height     : 1em;
+}
+
+.grid-col {
+    top        : 0;
+    bottom     : 0;
+    width      : 4em;
+    background : #f00;
+}
