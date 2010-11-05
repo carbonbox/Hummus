@@ -1,0 +1,13 @@
+<% FOREACH item = errors %>
+<div class='error message'>
+  <div class=title><% item.title %></div>
+  <% item.message %>
+</div>
+<% END %>
+<% FOREACH item = messages %>
+<div class='message'>
+  <div class=title><% item.title %></div>
+  <% item.message %>
+</div>
+<% END %>
+

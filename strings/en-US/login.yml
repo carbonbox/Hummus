@@ -1,0 +1,8 @@
+title        : Welcome
+instructions : Please login below or <a href=/register>register</a>.
+email        : Email
+password     : Password
+login        : Login
+logout       :
+  title   : Logout
+  message : You have been logged out. You may now log in again.

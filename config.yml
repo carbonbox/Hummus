@@ -4,3 +4,6 @@ appname  : "Hummus"
 db       : "db.sqlite"
 session  : "YAML"
 template : "template_toolkit"
+plugins  :
+  i18n:
+    default: "en-US"

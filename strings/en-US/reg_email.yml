@@ -1,0 +1,8 @@
+# registration email
+subject   : Hummus account activation
+welcome   : Welcome,
+body_1    : >
+            Thank you for registering for Hummus. The next step is to activate your
+            account. To do so, please click on the link below and you will be ready
+            to start using Hummus:
+signature : Hummus Team

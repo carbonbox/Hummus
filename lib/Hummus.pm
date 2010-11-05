@@ -2,6 +2,7 @@ package Hummus;
 
 use Modern::Perl;
 use Dancer ':syntax';
+use Dancer::Plugin::i18n;
 use Dancer::Plugin::Email;
 
 use TryCatch;
@@ -10,20 +11,35 @@ use Hummus::Model::User;
 our $VERSION = '0.1';
 
 get '/login' => sub {
-    template 'login';
+    template 'login', { s => strings 'login' };
 };
 
 post '/login' => sub {
-    my $user = Hummus::Model::User->new( email => params->{email} );
-    return template 'login', { bad_credentials => 1 } unless $user && $user->is_password(params->{password});
-    return template 'login', { not_active      => 1 } unless $user->active;
+    my $user   = Hummus::Model::User->new( email => params->{email} );
+    my @errors = ();
+
+    # check for login errors
+    if (not $user) {
+        push @errors, (strings error => 'bad_credentials');
+    }
+    elsif (not $user->is_password(params->{password})) {
+        push @errors, (strings error => 'bad_credentials');
+    }
+    elsif (not $user->active) {
+        push @errors, (strings error => 'not_active');
+    }
+
+    # errors mean reload this page
+    return template 'login', { errors => \@errors, s => strings 'login' } if @errors;
+
+    # otherwise we start using the app
     session user => $user->user;
     redirect '/';
 };
 
 get '/logout' => sub {
     session->destroy;
-    redirect '/login';
+    template 'login', { messages => [ strings login => 'logout' ], s => strings 'login' };
 };
 
 get '/register' => sub {
@@ -34,13 +50,12 @@ post '/register' => sub {
     try {
         my $user = Hummus::Model::User->register(params->{email}, params->{password});
         email {
-            to => params->{email},
-            subject => "Hummus account activiation",
-            message => "Welcome!\n\n" .
-                "Thanks for registering for Hummus. The next step is to activate your account. " .
-                "To do so, please click on the link below:\n\n" .
+            to      => params->{email},
+            subject => (message reg_email => 'subject'),
+            message => (message reg_email => 'welcome') . "\n\n" .
+                (message reg_email => 'body_1') . "\n\n" .
                 "  http://localhost:3000/activate/" . $user->key . "\n\n".
-                "Hummus Team",
+                (message reg_email => 'signature'),
         };
         return template 'registered';
     }

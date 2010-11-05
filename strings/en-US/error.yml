@@ -1,0 +1,12 @@
+# Login errors
+bad_credentials:
+  title   : Login Problem
+  message : The email/password combination is not known.
+not_active:
+  title   : Login Problem
+  message : Your account is not active yet. Please refere to the intructions emailed to you.
+
+# Registration errors
+registration:
+  title   : Registration Problem
+  message : The email/password combination is not known.
