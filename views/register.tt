@@ -1,13 +1,8 @@
-<h1>Registration</h1>
-<div class=instructions>Please enter your email address and desired password twice.</div>
-<% IF error %>
-<div class='error message'>
-  <div class=title>Registration Problem</div>
-  <% error %>
-</div>
-<% END %>
+<h1>[% s.title %]</h1>
+<div class=instructions>[% s.instructions %]</div>
+[% INCLUDE 'snippets/messages.tt' %]
 <form class=register method=post>
-  <label>Email</label><input name=email>
-  <label>Password (twice)</label><input type=password name=password><input type=password name=password2>
-  <button type=submit>Register</button>
+  <label>[% s.email %]</label><input name=email>
+  <label>[% s.password %]</label><input type=password name=password><input type=password name=password2>
+  <button type=submit>[% s.register %]</button>
 </form>

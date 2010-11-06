@@ -15,6 +15,9 @@ use Fey::ORM::Table;
 use Hummus::Schema;
 use Hummus::Util::KeyGen;
 
+use constant ALREADY_REGISTERED => 'already registered';
+use constant KEYGEN_FAILED      => 'key generation failed';
+
 our $VERSION = '0.01';
 
 my $schema = Hummus::Schema->Schema();
@@ -63,7 +66,7 @@ Registers a new user.
 
 sub register {
     my ($class, $email, $password) = @_;
-    die "User $email is already registered.\n" if $class->new( email => $email );
+    die ALREADY_REGISTERED if $class->new( email => $email );
     my $key  = $class->generate_key();
     my $user = $class->insert( email => $email, key => $key );
     $user->set_password($password);
@@ -86,7 +89,7 @@ sub generate_key {
         my $key = Hummus::Util::KeyGen->key(12);
         return $key unless $class->new( key => $key );
     }
-    die 'Failed to generate user key.';
+    die KEYGEN_FAILED;
 }
 
 1;

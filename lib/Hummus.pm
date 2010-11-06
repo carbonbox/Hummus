@@ -43,7 +43,7 @@ get '/logout' => sub {
 };
 
 get '/register' => sub {
-    template 'register';
+    template 'register', { s => strings 'registration' };
 };
 
 post '/register' => sub {
@@ -57,10 +57,15 @@ post '/register' => sub {
                 "  http://localhost:3000/activate/" . $user->key . "\n\n".
                 (message reg_email => 'signature'),
         };
-        return template 'registered';
+        return template 'registered', { s => strings 'registration' };
     }
     catch ($e) {
-        return template 'register', { error => $e };
+        my $error;
+        given ($e) {
+            when (Hummus::Model::User::ALREADY_REGISTERED) { $error = strings error => 'already_registered' };
+            default { die $e };
+        }
+        return template 'register', { errors => [ $error ], s => strings 'registration' };
     }
 };
 
@@ -81,7 +86,7 @@ post '/activate' => sub {
 };
 
 get '/' => sub {
-    return redirect '/login' unless session 'user';
+    redirect '/login' unless session 'user';
     template 'application';
 };
 

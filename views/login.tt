@@ -1,8 +1,8 @@
-<h1><% s.title %></h1>
-<div class=instructions><% s.instructions %></div>
-<% INCLUDE 'snippets/messages.tt' %>
+<h1>[% s.title %]</h1>
+<div class=instructions>[% s.instructions %]</div>
+[% INCLUDE 'snippets/messages.tt' %]
 <form class=login method=post action='/login'>
-  <label><% s.email    %></label><input name=email>
-  <label><% s.password %></label><input type=password name=password>
-  <button type=submit><% s.login %></button>
+  <label>[% s.email    %]</label><input name=email>
+  <label>[% s.password %]</label><input type=password name=password>
+  <button type=submit>[% s.login %]</button>
 </form>

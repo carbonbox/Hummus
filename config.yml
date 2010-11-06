@@ -4,6 +4,10 @@ appname  : "Hummus"
 db       : "db.sqlite"
 session  : "YAML"
 template : "template_toolkit"
+engines  :
+    template_toolkit:
+        start_tag: '[%'
+        stop_tag: '%]'
 plugins  :
   i18n:
     default: "en-US"
