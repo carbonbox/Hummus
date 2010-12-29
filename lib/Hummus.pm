@@ -86,7 +86,7 @@ post '/activate' => sub {
 };
 
 get '/' => sub {
-    redirect '/login' unless session 'user';
+    return redirect '/login' unless session 'user';
     template 'application';
 };
 

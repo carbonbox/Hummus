@@ -1,5 +1,5 @@
 layout   : "main"
-logger   : "file"
+logger   : "console"
 appname  : "Hummus"
 db       : "db.sqlite"
 session  : "YAML"
@@ -11,3 +11,8 @@ engines  :
 plugins  :
   i18n:
     default: "en-US"
+plack_middlewares :
+  -
+    - "ReverseProxy"
+#  -
+#    - "Debug"

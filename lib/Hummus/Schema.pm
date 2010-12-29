@@ -16,8 +16,6 @@ use Fey::DBIManager::Source;
 use Fey::Loader;
 use Fey::ORM::Schema;
 
-our $VERSION = '0.01';
-
 my $db     = setting 'db';
 my $source = Fey::DBIManager::Source->new( dsn => "dbi:SQLite:dbname=$db" );
 my $schema = Fey::Loader->new( dbh => $source->dbh() )->make_schema();
