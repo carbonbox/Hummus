@@ -1,5 +1,6 @@
 title        : Registration
 instructions : Please enter your email address and desired password twice.
 email        : Email
-password     : Password (twice)
+password     : Password
+password2    : Password again
 register     : Register

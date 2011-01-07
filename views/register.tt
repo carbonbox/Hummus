@@ -2,7 +2,11 @@
 <div class=instructions>[% s.instructions %]</div>
 [% INCLUDE 'snippets/messages.tt' %]
 <form class=register method=post>
-  <label>[% s.email %]</label><input name=email>
-  <label>[% s.password %]</label><input type=password name=password><input type=password name=password2>
+  <input name=email>
+  <label>[% s.email %]</label>
+  <input type=password name=password>
+  <label>[% s.password %]</label>
+  <input type=password name=password2>
+  <label>[% s.password2 %]</label>
   <button type=submit>[% s.register %]</button>
 </form>
